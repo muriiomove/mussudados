@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -25,14 +24,13 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Defina um usuário e senha fixos (você pode mudar isso depois)
             const validUser = "mussumago";
             const validPass = "senhaSegura123";
 
             if (username === validUser && password === validPass) {
                 localStorage.setItem("authenticated", "true");
                 alert("Login bem-sucedido!");
-                window.location.href = "index.html";
+                window.location.replace("index.html"); // Corrigido para usar replace ao invés de href
             } else {
                 alert("Usuário ou senha incorretos.");
             }
