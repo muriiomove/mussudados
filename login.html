@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -18,25 +19,25 @@
     </form>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        fetch('users.json')
+            .then(response => response.json())
+            .then(validUsers => {
+                document.getElementById('loginForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
 
-            const validUser = "mussumago";
-            const validPass = "senhaSegura123";
-
-            if (username === validUser && password === validPass) {
-                localStorage.setItem("authenticated", "true");
-                alert("Login bem-sucedido!");
-
-                // Vamos garantir que o redirecionamento funcione
-                window.location.href = "./index.html";
-            } else {
-                alert("Usuário ou senha incorretos.");
-            }
-        });
+                    if (validUsers[username] && validUsers[username] === password) {
+                        localStorage.setItem("authenticated", "true");
+                        alert("Login bem-sucedido!");
+                        window.location.href = "./index.html";
+                    } else {
+                        alert("Usuário ou senha incorretos.");
+                    }
+                });
+            })
+            .catch(error => alert("Erro ao carregar usuários. Verifique o arquivo users.json."));
     </script>
 </body>
 </html>
