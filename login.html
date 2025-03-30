@@ -30,7 +30,9 @@
             if (username === validUser && password === validPass) {
                 localStorage.setItem("authenticated", "true");
                 alert("Login bem-sucedido!");
-                window.location.replace("index.html"); // Corrigido para usar replace ao invés de href
+
+                // Vamos garantir que o redirecionamento funcione
+                window.location.href = "./index.html";
             } else {
                 alert("Usuário ou senha incorretos.");
             }
