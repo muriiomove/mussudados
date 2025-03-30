@@ -19,25 +19,29 @@
     </form>
 
     <script>
-        fetch('users.json')
-            .then(response => response.json())
-            .then(validUsers => {
-                document.getElementById('loginForm').addEventListener('submit', function(event) {
-                    event.preventDefault();
+        // Lista de usuários válidos - Agora dentro do próprio HTML
+        const validUsers = {
+            "mussumago": "senhaSegura123",
+            "novoUsuario1": "senha123",
+            "novoUsuario2": "senha456",
+            "admin": "adminpass",
+            "guest": "guestpass"
+        };
 
-                    const username = document.getElementById('username').value;
-                    const password = document.getElementById('password').value;
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-                    if (validUsers[username] && validUsers[username] === password) {
-                        localStorage.setItem("authenticated", "true");
-                        alert("Login bem-sucedido!");
-                        window.location.href = "./index.html";
-                    } else {
-                        alert("Usuário ou senha incorretos.");
-                    }
-                });
-            })
-            .catch(error => alert("Erro ao carregar usuários. Verifique o arquivo users.json."));
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (validUsers[username] && validUsers[username] === password) {
+                localStorage.setItem("authenticated", "true");
+                alert("Login bem-sucedido!");
+                window.location.href = "./index.html";
+            } else {
+                alert("Usuário ou senha incorretos.");
+            }
+        });
     </script>
 </body>
 </html>
