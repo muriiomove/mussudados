@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o Jogo</title>
+</head>
+<body>
+    <h1>Escolha o País, Campeonato e Tipo</h1>
+    <form id="selectionForm">
+        <label>País:</label>
+        <select id="countrySelect" required>
+            <option value="Brasil">Brasil</option>
+        </select>
+        <br><br>
+        
+        <label>Campeonato:</label>
+        <select id="championshipSelect" required>
+            <option value="serie-a">Série A</option>
+        </select>
+        <br><br>
+        
+        <label>Tipo:</label>
+        <select id="typeSelect" required>
+            <option value="sfm">SFM</option>
+            <option value="fm">FM</option>
+            <option value="mfm">MFM</option>
+            <option value="eq">EQ</option>
+            <option value="mfv">MFV</option>
+            <option value="fv">FV</option>
+            <option value="sfv">SFV</option>
+        </select>
+        <br><br>
+        
+        <button type="submit">Acessar</button>
+    </form>
+
+    <script>
+        document.getElementById("selectionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const type = document.getElementById("typeSelect").value;
+            const url = `${window.location.origin}/serie-a-brasil-2022-2024-${type}.html`;
+            window.location.href = url;
+        });
+    </script>
+</body>
+</html>
