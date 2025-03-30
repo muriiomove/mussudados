@@ -6,6 +6,13 @@
 <title>Sem Dados</title>
 </head>
 <body>
+
+<script>
+    if (!sessionStorage.getItem("authenticated")) {
+        window.location.href = "login.html";
+    }
+</script>
+
 <h1>Sem dados disponíveis</h1>
 <p>Esta página não possui dados para exibição.</p>
 </body>

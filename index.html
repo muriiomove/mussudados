@@ -6,6 +6,13 @@
     <title>Escolha o Jogo</title>
 </head>
 <body>
+
+<script>
+    if (!sessionStorage.getItem("authenticated")) {
+        window.location.href = "login.html";
+    }
+</script>
+
     <h1>Escolha o País, Campeonato e Tipo</h1>
     <form id="selectionForm">
         <label>País:</label>
